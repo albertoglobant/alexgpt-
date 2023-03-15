@@ -1,0 +1,31 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+
+.formContainer {
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.slick-track {
+  margin-left: 0 !important;
+}
+
+%overflow-ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.overflowEllipsisTwoLines {
+  @extend %overflow-ellipsis;
+  -webkit-line-clamp: 2;
+}
+
+.overflowEllipsisFourLines {
+  @extend %overflow-ellipsis;
+  -webkit-line-clamp: 4;
+}

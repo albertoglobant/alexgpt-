@@ -1,10 +1,18 @@
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import Login from './modules/Login';
+import Home from './modules/Home';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Alex GPT</h1>
-    </div>
+    <Router>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
