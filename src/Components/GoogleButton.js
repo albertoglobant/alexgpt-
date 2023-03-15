@@ -1,6 +1,6 @@
 import MaterialButton from '@mui/material/Button';
 
-import { ReactComponent as GoogleLogo } from '../../assets/images/googleLogo.svg';
+import { ReactComponent as GoogleLogo } from '../assets/images/googleLogo.svg';
 
 function GoogleButton({ onLogin }) {
   return (
