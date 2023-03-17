@@ -6,6 +6,10 @@
 @import 'sass/icons';
 @import 'sass/breakpoints';
 
+//  *** COMPONENTS *** //
+@import './components/GoogleButton/partials/';
+@import './components/NavBar/partials/';
+
 //  *** MODULES *** //
 @import './modules/Login/partials/';
 @import './modules/Home/partials/';

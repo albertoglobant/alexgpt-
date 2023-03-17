@@ -1,14 +1,14 @@
-import { useGoogleLogin } from '@react-oauth/google';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useGoogleLogin } from '@react-oauth/google';
+import { useNavigate } from 'react-router-dom';
 import _ from 'underscore';
 
-import GoogleButton from '../../Components/GoogleButton';
+import GoogleButton from '../../components/GoogleButton';
 import WelcomeText from './components/Text';
 import store from '../../store';
 import { setUser, getUserInfo } from '../../store/user';
 import welcomeImg from '../../assets/images/welcome-image.svg';
-import { useNavigate } from 'react-router-dom';
 
 function Login({ user }) {
   const login = useGoogleLogin({
@@ -26,46 +26,19 @@ function Login({ user }) {
         .then(() => navigate('/home'));
     }
   }, [user]);
+
   return (
-    <div style={styles.container}>
-      <div style={styles.contentWrapper}>
+    <div className="loginContainer">
+      <div className="loginContent">
         <WelcomeText />
         <GoogleButton onLogin={() => login()} />
       </div>
-      <div style={styles.imgWrapper}>
-        <img
-          src={welcomeImg}
-          style={styles.img}
-          alt="Discover the Globant experience!"
-        />
+      <div className="loginImage">
+        <img src={welcomeImg} alt="Discover the Globant experience!" />
       </div>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    display: 'flex',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    height: '100%',
-    padding: '40px',
-  },
-  contentWrapper: {
-    display: 'flex',
-    flex: 1,
-    height: '100%',
-    flexFlow: 'column',
-    justifyContent: 'center',
-    width: '50%',
-  },
-  imgWrapper: {
-    width: '50%',
-  },
-  img: {
-    width: '100%',
-  },
-};
 
 const mapStateToProps = (store) => ({
   user: store.user,

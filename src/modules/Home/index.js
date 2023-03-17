@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import NavBar from '../../Components/NavBar';
+import NavBar from '../../components/NavBar';
 import Channel from './components/Channel';
 import Chat from './components/Chat';
 

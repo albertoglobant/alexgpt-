@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import NavBar from '../../Components/NavBar';
+import NavBar from '../../components/NavBar';
 import itemImage from '../../assets/images/item.png';
 import { useState } from 'react';
 
