@@ -5,3 +5,8 @@
 @import 'sass/layout';
 @import 'sass/icons';
 @import 'sass/breakpoints';
+
+//  *** MODULES *** //
+@import './modules/Login/partials/';
+@import './modules/Home/partials/';
+@import './modules/Products/partials/';

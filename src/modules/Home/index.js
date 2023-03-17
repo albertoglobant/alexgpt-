@@ -1,24 +1,30 @@
 import { connect } from 'react-redux';
 
-function Home({ user }) {
+import NavBar from '../../Components/NavBar';
+import Channel from './components/Channel';
+import Chat from './components/Chat';
+
+function Home({ userInfo }) {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: 30,
-        width: '80%',
-      }}
-    >
-      <h1>{`Bienvenido ${user.name}`}</h1>
-      <img src={user.picture} style={{ borderRadius: '50%' }} />
-    </div>
+    <>
+      <NavBar avatar={userInfo.picture} title="UI Engineering" />
+      <div style={styles.mainWrapper}>
+        <Channel />
+        <Chat avatar={userInfo.picture} />
+      </div>
+    </>
   );
 }
 
 const mapStateToProps = (store) => ({
-  user: store.user.userInfo,
+  userInfo: store.user.userInfo,
 });
+
+const styles = {
+  mainWrapper: {
+    height: '100%',
+    display: 'flex',
+  },
+};
+
 export default connect(mapStateToProps)(Home);

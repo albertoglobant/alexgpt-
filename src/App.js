@@ -5,13 +5,17 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
+import _ from 'underscore';
 
 import Login from './modules/Login';
 import Home from './modules/Home';
+import Products from './modules/Products';
 
 function App({ user }) {
   const isGlobantUser = () => {
-      return user.userInfo && user.userInfo.email.includes('@globant');
+      return (
+        !_.isEmpty(user.userInfo) && user.userInfo.email.includes('@globant')
+      );
     },
     ProtectedRoute = ({ children }) => {
       if (!isGlobantUser()) {
@@ -22,8 +26,8 @@ function App({ user }) {
     };
 
   return (
-    <Router>
-      <div className="container">
+    <div style={styles._app}>
+      <Router>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route
@@ -34,14 +38,31 @@ function App({ user }) {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/products"
+            element={
+              <ProtectedRoute>
+                <Products />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
 
 const mapStateToProps = (store) => ({
   user: store.user,
 });
+
+const styles = {
+  _app: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden',
+  },
+};
 
 export default connect(mapStateToProps)(App);

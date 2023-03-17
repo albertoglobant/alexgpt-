@@ -1,69 +1,70 @@
-import { Box } from '@mui/material';
-import axios from 'axios';
 import { useGoogleLogin } from '@react-oauth/google';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import _ from 'underscore';
 
 import GoogleButton from '../../Components/GoogleButton';
-import LoginImage from './components/Image';
 import WelcomeText from './components/Text';
 import store from '../../store';
-import { setUser } from '../../store/user';
+import { setUser, getUserInfo } from '../../store/user';
+import welcomeImg from '../../assets/images/welcome-image.svg';
 import { useNavigate } from 'react-router-dom';
 
 function Login({ user }) {
   const login = useGoogleLogin({
       onSuccess: (codeResponse) => {
-        store.dispatch(setUser({ access_token: codeResponse.access_token }));
+        store.dispatch(setUser(codeResponse.access_token));
       },
       onError: (err) => console.log('err ==>', err),
     }),
-    navigation = useNavigate();
+    navigate = useNavigate();
 
   useEffect(() => {
-    if (user.access_token && !user.userInfo) {
-      axios
-        .get(
-          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
-          {
-            headers: {
-              Authorization: `Bearer ${user.access_token}`,
-              Accept: 'application/json',
-            },
-          }
-        )
-        .then((res) => {
-          store.dispatch(setUser({ userInfo: res.data }));
-          navigation('/home');
-        })
-        .catch((err) => console.log(err));
+    if (user.access_token && _.isEmpty(user.userInfo)) {
+      store
+        .dispatch(getUserInfo(user.access_token))
+        .then(() => navigate('/home'));
     }
   }, [user]);
   return (
-    <Box sx={styles.wrapper}>
-      <Box sx={styles.content}>
+    <div style={styles.container}>
+      <div style={styles.contentWrapper}>
         <WelcomeText />
         <GoogleButton onLogin={() => login()} />
-      </Box>
-      <LoginImage />
-    </Box>
+      </div>
+      <div style={styles.imgWrapper}>
+        <img
+          src={welcomeImg}
+          style={styles.img}
+          alt="Discover the Globant experience!"
+        />
+      </div>
+    </div>
   );
 }
 
 const styles = {
-  wrapper: {
+  container: {
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    minHeight: '100vh',
+    height: '100%',
     padding: '40px',
-    gap: '80px',
-    flexDirection: {
-      xs: 'column',
-      md: 'row',
-    },
   },
-  content: { flex: 1 },
+  contentWrapper: {
+    display: 'flex',
+    flex: 1,
+    height: '100%',
+    flexFlow: 'column',
+    justifyContent: 'center',
+    width: '50%',
+  },
+  imgWrapper: {
+    width: '50%',
+  },
+  img: {
+    width: '100%',
+  },
 };
 
 const mapStateToProps = (store) => ({

@@ -1,0 +1,41 @@
+.mainWrapper {
+  background-color: #f2f3f5;
+  width: 30%;
+}
+
+.header {
+  align-items: center;
+  border-bottom: 1px solid #e3e5e8;
+  display: flex;
+  height: 50px;
+  padding: 10px;
+}
+
+.headerText {
+  color: #060607;
+  font-size: 16px;
+}
+
+.channelListWrapper {
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  justify-content: space-between;
+  height: 50px;
+  div {
+    display: flex;
+    align-items: center;
+  }
+  h4 {
+    color: #6a7480;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 0 5px;
+  }
+}
+
+.icon {
+  color: #6a7480;
+  font-size: 16px;
+}

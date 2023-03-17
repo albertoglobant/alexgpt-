@@ -1,0 +1,36 @@
+.titleWrapper {
+  flex-grow: 0.1;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  flex-grow: 0.1;
+  h3 {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 14px;
+    letter-spacing: 0.15px;
+    color: #ffffff;
+  }
+  img {
+    max-width: 35px;
+  }
+}
+
+.contentWrapper {
+  flex-grow: 0.1;
+  .title {
+    font-weight: 600;
+    font-size: 50px;
+  }
+  .subtitle {
+    font-family: RobotoLight;
+    font-size: 25px;
+  }
+  .content {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+}
