@@ -19,7 +19,7 @@ function NavBar({ title, userName, avatar }) {
             onClick={() =>
               showDialog(
                 `¿Deseas cerrar sesión ${userName}?`,
-                ['Sí, cerrar sesión', 'no'],
+                ['Sí, cerrar sesión', 'No'],
                 avatar,
                 (e) => {
                   if (e === 0) {

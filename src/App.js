@@ -57,7 +57,7 @@ function App({ user }) {
         title={state.title}
         buttons={
           state.buttons.length === 0
-            ? ['Sí, cerrar sesión', 'no']
+            ? ['Sí, cerrar sesión', 'No']
             : state.buttons
         }
         avatar={state.avatar}

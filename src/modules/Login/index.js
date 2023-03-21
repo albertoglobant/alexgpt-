@@ -24,7 +24,7 @@ function Login({ user }) {
     if (user?.access_token && _.isEmpty(user.userInfo)) {
       store
         .dispatch(getUserInfo(user.access_token))
-        .then(() => navigate('/home'));
+        .then(() => navigate('/products'));
     }
   }, [user]);
 

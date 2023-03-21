@@ -2,8 +2,23 @@
   .MuiDialog-paper {
     .MuiDialogContent-root {
       text-align: center;
+      .MuiAvatar-root {
+        width: 100%;
+        margin-bottom: 15px;
+        img {
+          width: 40px;
+          border-radius: 50%;
+        }
+      }
       button {
-        margin-top: 10px;
+        text-transform: none;
+        background: #8cc63fab;
+        margin: 10px;
+        color: rgba(0, 0, 0, 0.6);
+        transition: 0.7s;
+        &:hover {
+          background: #d9e021;
+        }
       }
     }
   }
