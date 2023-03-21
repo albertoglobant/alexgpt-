@@ -11,7 +11,7 @@ import './index.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <GoogleOAuthProvider clientId="956150835401-snkdt7j7uesnsirhh6ekol8f2c9utn4i.apps.googleusercontent.com">
+  <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_AUTH_API_KEY}>
     <React.StrictMode>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
