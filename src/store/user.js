@@ -35,6 +35,9 @@ const loginSlice = createSlice({
     setUser: (state, action) => {
       state.access_token = action.payload;
     },
+    removeUser: () => {
+      return initialState;
+    },
   },
   extraReducers: {
     [getUserInfo.pending]: (state, action) => {
@@ -51,6 +54,6 @@ const loginSlice = createSlice({
   },
 });
 
-export const { setUser } = loginSlice.actions;
+export const { setUser, removeUser } = loginSlice.actions;
 
 export default loginSlice.reducer;

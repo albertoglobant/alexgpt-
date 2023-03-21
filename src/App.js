@@ -10,6 +10,8 @@ import _ from 'underscore';
 import Login from './modules/Login';
 import Home from './modules/Home';
 import Products from './modules/Products';
+import { Initialize } from './utils';
+import { CustomDialog } from './components/Dialog';
 
 function App({ user }) {
   const isGlobantUser = () => {
@@ -24,6 +26,8 @@ function App({ user }) {
 
       return children;
     };
+
+  var state = Initialize();
 
   return (
     <div style={styles._app}>
@@ -48,12 +52,24 @@ function App({ user }) {
           />
         </Routes>
       </Router>
+      <CustomDialog
+        isOpen={state.isOpen}
+        title={state.title}
+        buttons={
+          state.buttons.length === 0
+            ? ['Sí, cerrar sesión', 'no']
+            : state.buttons
+        }
+        avatar={state.avatar}
+        handleClose={state.handleClose}
+        handleExit={state.handleExit}
+      />
     </div>
   );
 }
 
 const mapStateToProps = (store) => ({
-  user: store.user,
+  user: store,
 });
 
 const styles = {

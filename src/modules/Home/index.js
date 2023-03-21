@@ -1,13 +1,22 @@
 import { connect } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import NavBar from '../../components/NavBar';
 import Channel from './components/Channel';
 import Chat from './components/Chat';
 
 function Home({ userInfo }) {
+  const { state } = useLocation();
+
+  state && console.log('location', state.product);
+
   return (
     <>
-      <NavBar avatar={userInfo.picture} title="UI Engineering" />
+      <NavBar
+        title="UI Engineering"
+        avatar={userInfo.picture}
+        userName={userInfo.given_name}
+      />
       <div style={styles.mainWrapper}>
         <Channel />
         <Chat avatar={userInfo.picture} />
@@ -17,7 +26,7 @@ function Home({ userInfo }) {
 }
 
 const mapStateToProps = (store) => ({
-  userInfo: store.user.userInfo,
+  userInfo: store.userInfo,
 });
 
 const styles = {

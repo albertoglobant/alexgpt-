@@ -1,10 +1,10 @@
 import { ReactComponent as GoogleLogo } from '../../assets/images/googleLogo.svg';
 
-function GoogleButton({ onLogin }) {
+function GoogleButton({ onLogin, isLoggedIn }) {
   return (
     <button className="googleButton" onClick={onLogin}>
       <GoogleLogo />
-      <span>Log in with Google</span>
+      <span>{isLoggedIn ? 'Log out' : 'Log in with Google'}</span>
     </button>
   );
 }
