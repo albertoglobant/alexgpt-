@@ -35,7 +35,9 @@ function Products({ userInfo }) {
               key={product.id}
               className="productItem"
               onClick={() => {
-                navigate('/home', { state: { product: product.name } });
+                navigate('/home', {
+                  state: { product: `${product.id} ${product.name}` },
+                });
               }}
             >
               <img src={product.img} alt="test" />
