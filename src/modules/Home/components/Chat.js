@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import BeatLoader from 'react-spinners/BeatLoader';
+import { getAnswer } from '../../../api/openAIrequest';
 
 import globantLogo from '../../../assets/images/globantLogo.png';
 
@@ -13,15 +14,15 @@ function Chat({ avatar }) {
     setInputValue(e.target.value);
   }
 
-  function handleKeyDown(e) {
+  async function handleKeyDown(e) {
     if (e.key === 'Enter') {
       setQuestion(e.target.value);
       setLoading(true);
+      setAnswer('');
       setInputValue('');
-      setTimeout(() => {
-        setAnswer(true);
-        setLoading(false);
-      }, 4000);
+      const IAresp = await getAnswer('user', e.target.value);
+      setAnswer(IAresp);
+      setLoading(false);
     }
   }
 
@@ -34,7 +35,7 @@ function Chat({ avatar }) {
             <p>{question}</p>
           </div>
           <BeatLoader
-            color="rgb(54, 215, 183)"
+            color="rgb(140 198 63)"
             cssOverride={{
               textAlign: 'center',
             }}
@@ -47,17 +48,7 @@ function Chat({ avatar }) {
       {answer && (
         <div className="answer">
           <img src={globantLogo} />
-          <p>
-            En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha
-            mucho tiempo que vivía un hidalgo de los de lanza en astillero,
-            adarga antigua, rocín flaco y galgo corredor. Una olla de algo más
-            vaca que carnero, salpicón las más noches, duelos y quebrantos los
-            sábados, lantejas los viernes, algún palomino de añadidura los
-            domingos, consumían las tres partes de su hacienda. El resto della
-            concluían sayo de velarte, calzas de velludo para las fiestas, con
-            sus pantuflos de lo mesmo, y los días de entresemana se honraba con
-            su vellorí de lo más fino.
-          </p>
+          <p>{answer}</p>
         </div>
       )}
       <input

@@ -17,10 +17,10 @@ export async function getAnswer(role, content) {
       max_tokens: 2000,
       temperature: 0.3,
     };
-  client
-    .post('https://api.openai.com/v1/chat/completions', params)
-    .then((result) => {
-      console.log(result.data.choices[0].message.content);
-      return result.data.choices[0].message.content;
-    });
+  const resp = await client.post(
+    'https://api.openai.com/v1/chat/completions',
+    params
+  );
+
+  return resp.data.choices[0].message.content;
 }

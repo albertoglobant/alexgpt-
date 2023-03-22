@@ -10,10 +10,6 @@ import Chat from './components/Chat';
 function Home({ userInfo }) {
   const { state } = useLocation();
 
-  useEffect(() => {
-    // getAnswer('user', 'create a user story for login');
-  }, []);
-
   return (
     <>
       <NavBar
