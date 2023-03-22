@@ -21,5 +21,6 @@ export async function getAnswer(role, content) {
     .post('https://api.openai.com/v1/chat/completions', params)
     .then((result) => {
       console.log(result.data.choices[0].message.content);
+      return result.data.choices[0].message.content;
     });
 }

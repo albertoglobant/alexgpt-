@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import ChannelItem from './ChannelItem';
 
-function Channels() {
+function Channels({ product }) {
   const navigate = useNavigate();
 
   return (
@@ -14,7 +14,7 @@ function Channels() {
         </div>
         <AddIcon className="icon" />
       </div>
-      <ChannelItem />
+      <ChannelItem product={product} />
     </div>
   );
 }

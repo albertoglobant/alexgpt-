@@ -4,7 +4,7 @@ import { store } from '../../store';
 import { showDialog } from '../../utils';
 import { removeUser } from '../../store/user';
 
-function NavBar({ title, userName, avatar }) {
+function NavBar({ product, userName, avatar }) {
   return (
     <div className="navBar">
       <div className="leftColumn">
@@ -13,7 +13,7 @@ function NavBar({ title, userName, avatar }) {
       <div className="rightColumn">
         <div>
           <h4>
-            <span>#</span> {title}
+            <span>#</span> {product}
           </h4>
           <img
             onClick={() =>

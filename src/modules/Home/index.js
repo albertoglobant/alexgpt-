@@ -17,12 +17,12 @@ function Home({ userInfo }) {
   return (
     <>
       <NavBar
-        title={state.product}
+        product={state.product}
         avatar={userInfo.picture}
         userName={userInfo.given_name}
       />
       <div style={styles.mainWrapper}>
-        <Channel />
+        <Channel product={state.product} />
         <Chat avatar={userInfo.picture} />
       </div>
     </>

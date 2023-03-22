@@ -1,11 +1,11 @@
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 
-function ChannelItem() {
+function ChannelItem({ product }) {
   return (
     <>
       <div className="channelHeader">
         <AnalyticsIcon />
-        <h4>UI Engineering</h4>
+        <h4>{product}</h4>
       </div>
       <div className="channelItem">
         <span className="channelItemIcon">EC</span>
