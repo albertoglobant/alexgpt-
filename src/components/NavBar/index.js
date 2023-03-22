@@ -4,7 +4,7 @@ import { store } from '../../store';
 import { showDialog } from '../../utils';
 import { removeUser } from '../../store/user';
 
-function NavBar({ product, userName, avatar }) {
+function NavBar({ product = 'general', userName, avatar }) {
   return (
     <div className="navBar">
       <div className="leftColumn">
